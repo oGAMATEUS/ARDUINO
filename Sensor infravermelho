@@ -3,7 +3,6 @@
  
 
 int pino_sensor = 9;
- 
 int estado_sensor = 0;
  
 void setup()
@@ -11,7 +10,6 @@ void setup()
   Serial.begin(9600);
   // Define o pino do sensor como entrada
   pinMode(pino_sensor, INPUT);
-  // Define os pinos dos leds e buzzer como saida
   
   Serial.println("Teste sensor infravermelho Arduino");
 }
@@ -21,12 +19,13 @@ void loop()
   estado_sensor = digitalRead(pino_sensor);
   if (estado_sensor == 0)
   {
+    // com objeto na frente do sensor, ele escreve 
     Serial.println("tem algo aqui");
-    delay(100);
+    delay(1000);
   }
   else
   {
-    // Sem movimento, mantem led verde ligado
+    // Sem OBJETO, escreve a seguinte mensagem 
     Serial.println("lonely");
   }
 }
