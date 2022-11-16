@@ -1,0 +1,32 @@
+// Programa: Sensor infravermelho Arduino
+// Autor: gabriel mateus
+ 
+
+int pino_sensor = 9;
+ 
+int estado_sensor = 0;
+ 
+void setup()
+{
+  Serial.begin(9600);
+  // Define o pino do sensor como entrada
+  pinMode(pino_sensor, INPUT);
+  // Define os pinos dos leds e buzzer como saida
+  
+  Serial.println("Teste sensor infravermelho Arduino");
+}
+ 
+void loop()
+{
+  estado_sensor = digitalRead(pino_sensor);
+  if (estado_sensor == 0)
+  {
+    Serial.println("tem algo aqui");
+    delay(100);
+  }
+  else
+  {
+    // Sem movimento, mantem led verde ligado
+    Serial.println("lonely");
+  }
+}
