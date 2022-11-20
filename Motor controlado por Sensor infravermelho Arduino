@@ -1,0 +1,37 @@
+// Programa: Motor controlado por Sensor infravermelho Arduino
+// Autor: gabriel mateus
+
+#define motor1A 10
+#define motor1B 11
+int pino_sensor = 9;
+int estado_sensor = 0;
+ 
+void setup()
+{
+  Serial.begin(9600);
+  // Define o pino do sensor como entrada
+  pinMode(pino_sensor, INPUT);
+  
+  
+}
+ 
+void loop()
+{
+  estado_sensor = digitalRead(pino_sensor);
+  if (estado_sensor == 0)
+  {
+    // com objeto na frente do sensor, ele escreve 
+    Serial.println("tem algo aqui");
+   analogWrite(motor1A,200);
+    delay(1); 
+    /* O delay serve para ver de quanto em quanto tempo o loop vai ser realizado
+     sendo que 1000 equivale a 1 segundo*/
+  }
+  else
+  {
+    // Sem OBJETO, escreve a seguinte mensagem 
+    Serial.println("lonely");
+    analogWrite(motor1B,200);
+    delay(1);
+  }
+}
